@@ -1,0 +1,10 @@
+/* My work (top stack): sticky stacking cards + 3D scroll layers. Loaded last so it wins over max.css / max2.css. */
+.stack .scard{position:sticky;top:0;backface-visibility:hidden;transform-origin:50% 40%}
+.scard-stage,.scard-stage:hover{transition:none}              /* GSAP drives the transform; a CSS transition would make it lag */
+.scard-dim{position:absolute;inset:0;border-radius:inherit;background:rgba(20,21,20,.58);opacity:0;pointer-events:none;z-index:6;will-change:opacity}
+.scard-chip,.scard-sticker,.scard-spin{translate:0 var(--py,0px)}   /* parallax offset, stacks with the bob animation */
+.scard-idx,.scard-title,.scard-bgword,.scard-stage{will-change:transform}
+@media (max-width:760px){
+  .stack .scard{border-radius:1rem}
+  .scard-bgword{will-change:auto}                             /* fewer big layers on phones */
+}
